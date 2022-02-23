@@ -1,0 +1,166 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "e151c6d719e54e018d2762f4ad941c28",
+    "entities": [
+      {
+        "tableName": "PhotoEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `photoPath` TEXT, `originalSize` INTEGER NOT NULL, `quality_100` REAL NOT NULL, `quality_95` REAL NOT NULL, `quality_90` REAL NOT NULL, `quality_85` REAL NOT NULL, `quality_80` REAL NOT NULL, `quality_75` REAL NOT NULL, `quality_70` REAL NOT NULL, `quality_65` REAL NOT NULL, `quality_60` REAL NOT NULL, `quality_55` REAL NOT NULL, `quality_50` REAL NOT NULL, `quality_45` REAL NOT NULL, `quality_40` REAL NOT NULL, `quality_35` REAL NOT NULL, `quality_30` REAL NOT NULL, `quality_25` REAL NOT NULL, `quality_20` REAL NOT NULL, `quality_15` REAL NOT NULL, `quality_10` REAL NOT NULL, `quality_5` REAL NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photoPath",
+            "columnName": "photoPath",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "originalSize",
+            "columnName": "originalSize",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_100",
+            "columnName": "quality_100",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_95",
+            "columnName": "quality_95",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_90",
+            "columnName": "quality_90",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_85",
+            "columnName": "quality_85",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_80",
+            "columnName": "quality_80",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_75",
+            "columnName": "quality_75",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_70",
+            "columnName": "quality_70",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_65",
+            "columnName": "quality_65",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_60",
+            "columnName": "quality_60",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_55",
+            "columnName": "quality_55",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_50",
+            "columnName": "quality_50",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_45",
+            "columnName": "quality_45",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_40",
+            "columnName": "quality_40",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_35",
+            "columnName": "quality_35",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_30",
+            "columnName": "quality_30",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_25",
+            "columnName": "quality_25",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_20",
+            "columnName": "quality_20",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_15",
+            "columnName": "quality_15",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_10",
+            "columnName": "quality_10",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality_5",
+            "columnName": "quality_5",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e151c6d719e54e018d2762f4ad941c28')"
+    ]
+  }
+}
