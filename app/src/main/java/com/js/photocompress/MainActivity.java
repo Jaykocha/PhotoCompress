@@ -193,7 +193,6 @@ public class MainActivity extends AppCompatActivity implements PhotoCompressInte
 
     @Override
     public void onDoneCompressing() {
-        AsyncTask.execute(() -> Database.getInstance(MainActivity.this).pathDao().insertPhotoEntity(photoData));
         showButtons();
     }
 
@@ -205,16 +204,12 @@ public class MainActivity extends AppCompatActivity implements PhotoCompressInte
 
     @Override
     public void whileCompressing(String name, int quality, int size) {
-        mapQualityToUpdateFunction(photoData, quality, size / 1000);
         Log.v("PhotoCompCallback", name + " Quality: " + quality + ", Size: " + size / 1000 + "kB");
     }
 
     @Override
     public void beforeCompressing(String name, int size) {
-        Log.v("PhotoCompCallback", "[BEFORE] " + name + ": " + size / 1000 + "KB");
-        photoData = new PhotoEntity(name, size / 1000, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0);
+        Log.v("PhotoCompCallback", "Quality: " + size);
     }
 
     private void mapQualityToUpdateFunction(PhotoEntity entity, int quality, int size) {
