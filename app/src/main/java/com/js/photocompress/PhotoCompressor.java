@@ -51,7 +51,6 @@ public class PhotoCompressor extends AsyncTask<String, Void, Boolean> {
 
     private int getQualitySettings(int size, int maxSize){
         double compressRatio = maxSize / (double) size;
-        //TODO replace by mean values
         final double [] ratioList = new double[] {1.005252632,0.694115789,0.549894737,0.460442105,
                 0.395084211,0.351610526,0.320126316,0.2924,0.270178947,0.253968421,0.236673684,
                 0.216842105,0.200736842,0.181084211,0.159947368,0.1374,0.112452632,0.083305263,
