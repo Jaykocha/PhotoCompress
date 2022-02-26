@@ -4,7 +4,7 @@ package com.js.photocompress;
  * Class which helps to identify a specific compression factor needed if you want to compress JPG's
  * to have a certain file size.
  * */
-public class PhotoQuality {
+public class CompressQuality {
 
     public static final int SIMPLE_DARK = 1010;
     public static final int DETAIL_LIGHT = 5817;
@@ -37,8 +37,8 @@ public class PhotoQuality {
      * @param fileSize image size usually obtained by calling file.length() (in bytes)
      * @param compressedKBSize the final image size after compression you are aiming for (in kilobytes)
      * @param imageType if you only take images in the sun with many details, like landscape pictures,
-     *                  use the flag [PhotoQuality.DETAIL_LIGHT]. For dark pictures with little details
-     *                  use the flag [PhotoQuality.SIMPLE_DARK]. Can be omitted if you want to use the
+     *                  use the flag [CompressQuality.DETAIL_LIGHT]. For dark pictures with little details
+     *                  use the flag [CompressQuality.SIMPLE_DARK]. Can be omitted if you want to use the
      *                  standard implementation which is the mean between SIMPLE_DARK and DETAIL_LIGHT
      * @return the suggested image quality (5-95), so the compressed image is as close as possible to the size
      * specified in @compressedKBSize. Returns -1 if file size is already smaller than specified @compressedKBSize
