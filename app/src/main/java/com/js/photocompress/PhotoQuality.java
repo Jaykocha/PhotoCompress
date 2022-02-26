@@ -34,8 +34,8 @@ public class PhotoQuality {
      * Function which returns the best starting point for image compression if you want to compress
      * to a certain value
      *
-     * @param fileSize image size usually obtained by calling file.length()
-     * @param compressedKBSize the final image size after compression you are aiming for
+     * @param fileSize image size usually obtained by calling file.length() (in bytes)
+     * @param compressedKBSize the final image size after compression you are aiming for (in kilobytes)
      * @param imageType if you only take images in the sun with many details, like landscape pictures,
      *                  use the flag [PhotoQuality.DETAIL_LIGHT]. For dark pictures with little details
      *                  use the flag [PhotoQuality.SIMPLE_DARK]. Can be omitted if you want to use the
