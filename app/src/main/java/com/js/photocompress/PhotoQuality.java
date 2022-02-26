@@ -1,10 +1,13 @@
 package com.js.photocompress;
 
+/**
+ * Class which helps to identify a specific compression factor needed if you want to compress JPG's
+ * to have a certain file size.
+ * */
 public class PhotoQuality {
 
-    public static final int SIMPLE_DARK = 1;
-    public static final int DETAIL_LIGHT = 2;
-    public static final int STANDARD = 3;
+    public static final int SIMPLE_DARK = 1010;
+    public static final int DETAIL_LIGHT = 5817;
 
     final int[] qualities = {
             95, 90, 85, 80, 75, 70, 65, 60, 55, 50,
@@ -27,9 +30,48 @@ public class PhotoQuality {
             0.08285, 0.06815, 0.0525, 0.03415
     };
 
+    /**
+     * Function which returns the best starting point for image compression if you want to compress
+     * to a certain value
+     *
+     * @param fileSize image size usually obtained by calling file.length()
+     * @param compressedKBSize the final image size after compression you are aiming for
+     * @param imageType if you only take images in the sun with many details, like landscape pictures,
+     *                  use the flag [PhotoQuality.DETAIL_LIGHT]. For dark pictures with little details
+     *                  use the flag [PhotoQuality.SIMPLE_DARK]. Can be omitted if you want to use the
+     *                  standard implementation which is the mean between SIMPLE_DARK and DETAIL_LIGHT
+     * @return the suggested image quality (5-95), so the compressed image is as close as possible to the size
+     * specified in @compressedKBSize. Returns -1 if file size is already smaller than specified @compressedKBSize
+     * or if required quality would be less than 5 to reach such a small compressed file size
+     * */
     public int get(long fileSize, int compressedKBSize, int imageType) {
         double wantedRatio = compressedKBSize / ((double) fileSize / 1000);
         double[] comprRatios = getRatioArray(imageType);
+        for (int i = 0; i < comprRatios.length; i++) {
+            if (comprRatios[i] < wantedRatio) {
+                if (Math.abs(comprRatios[i] - wantedRatio) > Math.abs(comprRatios[i - 1] - wantedRatio)) {
+                    return qualities[i - 1];
+                }
+                return qualities[i];
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Function which returns the best starting point for image compression if you want to compress
+     * to a certain value
+     *
+     * @param fileSize image size usually obtained by calling file.length()
+     * @param compressedKBSize the final image size after compression you are aiming for
+     *
+     * @return the suggested image quality (5-95), so the compressed image is as close as possible to the size
+     * specified in @compressedKBSize. Returns -1 if file size is already smaller than specified @compressedKBSize
+     * or if required quality would be less than 5 to reach such a small compressed file size
+     * */
+    public int get(long fileSize, int compressedKBSize) {
+        double wantedRatio = compressedKBSize / ((double) fileSize / 1000);
+        double[] comprRatios = getRatioArray(1);
         for (int i = 0; i < comprRatios.length; i++) {
             if (comprRatios[i] < wantedRatio) {
                 if (Math.abs(comprRatios[i] - wantedRatio) > Math.abs(comprRatios[i - 1] - wantedRatio)) {

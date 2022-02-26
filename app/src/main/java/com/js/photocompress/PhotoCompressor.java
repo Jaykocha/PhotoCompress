@@ -25,7 +25,7 @@ public class PhotoCompressor extends AsyncTask<String, Void, Boolean> {
         File file = new File(strings[0]);
         int currSize;
         int targetKBSize = 700;
-        int quality = new PhotoQuality().get(file.length(), targetKBSize, PhotoQuality.STANDARD);
+        int quality = new PhotoQuality().get(file.length(), targetKBSize);
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         do {
             bytes.reset();
