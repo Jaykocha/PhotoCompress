@@ -31,11 +31,6 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity implements PhotoCompressInterface {
 
     private static String imagePath;
-    private Button button;
-    private ProgressBar loadingIndi;
-    private final ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            this::handleResult);
     private final ActivityResultLauncher<String[]> requestPhotoPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(),
                     mappedResults -> {
@@ -44,6 +39,11 @@ public class MainActivity extends AppCompatActivity implements PhotoCompressInte
                             invokeCamera(createImagePath());
                         }
                     });
+    private Button button;
+    private ProgressBar loadingIndi;
+    private final ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            this::handleResult);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

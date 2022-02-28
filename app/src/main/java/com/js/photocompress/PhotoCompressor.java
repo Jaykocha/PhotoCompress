@@ -33,9 +33,9 @@ public class PhotoCompressor extends AsyncTask<String, Void, Boolean> {
             photo.compress(Bitmap.CompressFormat.JPEG, quality, bytes);
             currSize = bytes.toByteArray().length / 1000;
             compressorInterface.whileCompressing(strings[0], quality, currSize);
-            if(currSize > maxKBSize){
+            if (currSize > maxKBSize) {
                 quality -= 2;
-            }else if(currSize < minKBSize){
+            } else if (currSize < minKBSize) {
                 quality += 2;
             }
         } while (currSize > maxKBSize || currSize < minKBSize);
