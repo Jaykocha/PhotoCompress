@@ -24,16 +24,21 @@ public class PhotoCompressor extends AsyncTask<String, Void, Boolean> {
 
         File file = new File(strings[0]);
         int currSize;
-        int targetKBSize = 700;
-        int quality = new CompressQuality().get(file.length(), targetKBSize);
+        int maxKBSize = 700;
+        int minKBSize = 500;
+        int quality = new CompressQuality().get(file.length(), maxKBSize);
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         do {
             bytes.reset();
             photo.compress(Bitmap.CompressFormat.JPEG, quality, bytes);
             currSize = bytes.toByteArray().length / 1000;
             compressorInterface.whileCompressing(strings[0], quality, currSize);
-            quality -= 2;
-        } while (currSize > targetKBSize);
+            if(currSize > maxKBSize){
+                quality -= 2;
+            }else if(currSize < minKBSize){
+                quality += 2;
+            }
+        } while (currSize > maxKBSize || currSize < minKBSize);
         File f = new File(strings[0].replace(".jpg", "compressed.jpg"));
         try {
             f.createNewFile();
